@@ -1,0 +1,26 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Demo</title>
+</head>
+<body>
+    <h1>API Demo</h1>
+    <button onclick="fetchAndDisplayData()">Fetch Data</button>
+    <script>
+        function fetchAndDisplayData() {
+            const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Open a new window with a URL parameter
+                    const displayWindow = window.open(`display.html?data=${encodeURIComponent(JSON.stringify(data))}`, '_blank');
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    </script>
+</body>
+</html>
